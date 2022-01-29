@@ -322,8 +322,13 @@ class Processor:
                         pass
 
     def create_embed(self):
+        if (self.status_tweet["retweeted"] or "retweeted_status" in self.status_tweet):
+            color = 0x00BA7C
+        else:
+            color = 0x1DA0F2
+
         self.embed = Embed(
-            colour=0X1DA1F2,
+            colour=color,
             url="https://twitter.com/{}/status/{}".format(
                 self.status_tweet["user"]["screen_name"], self.status_tweet["id_str"]
             ),
